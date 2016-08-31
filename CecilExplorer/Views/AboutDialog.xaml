@@ -1,0 +1,97 @@
+﻿<Window
+	x:Class="CecilExplorer.Views.AboutDialog"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="About Mono.Cecil.Explorer"
+	Height="450" Width="950"
+	ResizeMode="NoResize" SizeToContent="Height"
+	ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+	UseLayoutRounding="True">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Grid Grid.Row="0" Margin="10">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="Auto"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="1*"/>
+				<ColumnDefinition Width="20"/>
+				<ColumnDefinition Width="2*"/>
+			</Grid.ColumnDefinitions>
+
+			<Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" VerticalAlignment="Top" Margin="0,0,10,0" Width="48" Height="48">
+				<Image.Source>
+					<DrawingImage Drawing="{StaticResource Property16Icon}"/>
+				</Image.Source>
+			</Image>
+
+			<TextBlock Grid.Row="0" Grid.Column="1" Text="Mono.Cecil.Explorer" FontWeight="Light" FontSize="21"/>
+
+			<StackPanel Grid.Row="1" Grid.Column="1">
+				<TextBlock Margin="0,10,0,0" Text="This tool shows the object hierarchy that Mono.Cecil reads from a CIL (.NET) assembly. Use it to learn about how compiled source code is seen by Cecil and how you can interpret and manipulate assemblies." TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="The members list contains all public properties and fields as well as parameterless methods returning a value. Anything IEnumerable lists the collection items instead of any members." TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="The Type column shows the interface type and, if different, the instance runtime type of the value." TextWrapping="Wrap"/>
+			</StackPanel>
+
+			<StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Bottom">
+				<TextBlock Margin="0,20,0,0">Version <Run Name="versionText"/></TextBlock>
+				<TextBlock Name="copyrightText" Margin="0,3,0,0" Text="Copyright"/>
+				<TextBlock><Hyperlink Click="Hyperlink_Click">http://unclassified.software/apps/cecilexplorer</Hyperlink></TextBlock>
+				<TextBlock Margin="0,3,0,0">Uses Mono.Cecil version <Run Name="cecilVersionText"/></TextBlock>
+				<TextBlock><Hyperlink Click="Hyperlink_Click">https://github.com/jbevain/cecil/</Hyperlink></TextBlock>
+			</StackPanel>
+
+			<StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="3">
+				<TextBlock Margin="0,10,0,0" Text="Keyboard shortcuts" FontWeight="Bold" TextWrapping="Wrap"/>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+
+					<TextBlock Grid.Row="0" Grid.Column="0" Margin="0,6,0,0" VerticalAlignment="Top" Text="Ctrl+O"/>
+					<TextBlock Grid.Row="0" Grid.Column="1" Margin="10,6,0,0" Text="Open an assembly file to explore (Note: You can also drag a file onto the window.)" TextWrapping="Wrap"/>
+					<TextBlock Grid.Row="1" Grid.Column="0" Margin="0,3,0,0" VerticalAlignment="Top" Text="Ctrl+F"/>
+					<TextBlock Grid.Row="1" Grid.Column="1" Margin="10,3,0,0" Text="Find in values (Note: Value search skips a few items that are not safe to follow endlessly, see green and purple colour.)" TextWrapping="Wrap"/>
+					<TextBlock Grid.Row="2" Grid.Column="0" Margin="0,3,0,0" VerticalAlignment="Top" Text="F3"/>
+					<TextBlock Grid.Row="2" Grid.Column="1" Margin="10,3,0,0" Text="Find again next" TextWrapping="Wrap"/>
+					<TextBlock Grid.Row="3" Grid.Column="0" Margin="0,3,0,0" VerticalAlignment="Top" Text="Shift+F3"/>
+					<TextBlock Grid.Row="3" Grid.Column="1" Margin="10,3,0,0" Text="Find again previous" TextWrapping="Wrap"/>
+					<TextBlock Grid.Row="4" Grid.Column="0" Margin="0,3,0,0" VerticalAlignment="Top" Text="F4"/>
+					<TextBlock Grid.Row="4" Grid.Column="1" Margin="10,3,0,0" Text="Go to the next currently visible same value" TextWrapping="Wrap"/>
+					<TextBlock Grid.Row="5" Grid.Column="0" Margin="0,3,0,0" VerticalAlignment="Top" Text="Shift+F4"/>
+					<TextBlock Grid.Row="5" Grid.Column="1" Margin="10,3,0,0" Text="Go to the previous currently visible same value" TextWrapping="Wrap"/>
+				</Grid>
+
+				<TextBlock Margin="0,20,0,0" Text="Colour key" FontWeight="Bold" TextWrapping="Wrap"/>
+				<TextBlock Margin="0,6,0,0" Text="Yellow: Same objects as the selected so you can see what is connected." Background="LemonChiffon" TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="Grey: null values or collection counts." Foreground="Gray" TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="Blue: Custom object representation instead of ToString() for easier navigation" Foreground="MediumBlue" TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="Green: Some Definition type instance is provided through a Reference type interface." Foreground="Green" TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="Purple: The value type is of a higher level in the hierarchy and may lead into reference loops." Foreground="DarkViolet" TextWrapping="Wrap"/>
+				<TextBlock Margin="0,3,0,0" Text="Red: Exceptions that occurred while getting a property value or executing a method." Foreground="OrangeRed" TextWrapping="Wrap"/>
+			</StackPanel>
+		</Grid>
+
+		<Border Grid.Row="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+			<StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button Content="Close" MinWidth="75" IsCancel="True" Click="CloseButton_Click"/>
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>

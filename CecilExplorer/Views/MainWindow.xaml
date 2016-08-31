@@ -1,0 +1,76 @@
+﻿<Window
+	x:Class="CecilExplorer.Views.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:ce="clr-namespace:CecilExplorer"
+	xmlns:tv="clr-namespace:ICSharpCode.TreeView"
+	xmlns:ui="clr-namespace:Unclassified.UI"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="{Binding Title}"
+	Height="150" Width="800" ResizeMode="CanResizeWithGrip"
+	MinHeight="250" MinWidth="500"
+	AllowDrop="True"
+	UseLayoutRounding="True"
+	DragDrop.DragEnter="Window_DragEnter"
+	DragDrop.Drop="Window_Drop"
+	KeyDown="Window_KeyDown">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		
+		<tv:SharpTreeView
+			x:Name="treeView"
+			Grid.Row="0"
+			ShowRoot="True" ShowLines="False"
+			SelectionMode="Single"
+			Root="{Binding RootObject}"
+			ui:ListViewLayoutManager.Enabled="True"
+			Style="{StaticResource {x:Type ListView}}"
+			BorderThickness="0"
+			ItemContainerStyle="{StaticResource SelectableListViewItemStyle}"
+			UseLayoutRounding="True"
+			SelectionChanged="TreeView_SelectionChanged"
+			SizeChanged="TreeView_SizeChanged">
+			<ListView.View>
+				<tv:SharpGridView AllowsColumnReorder="False">
+					<GridView.Columns>
+						<GridViewColumn Header="Name" ui:RangeColumn.MinWidth="50">
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<tv:SharpTreeNodeView/>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+						<GridViewColumn Header="Value" ui:RangeColumn.MinWidth="50">
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Value}" Foreground="{Binding ValueColor}" ui:TextBlockAutoToolTip.Enabled="True"/>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+						<GridViewColumn Header="Type" ui:RangeColumn.MinWidth="50" ui:RangeColumn.IsFillColumn="True" HeaderContainerStyle="{StaticResource LastGridViewColumnHeaderStyle}">
+							<GridViewColumn.CellTemplate>
+								<DataTemplate>
+									<TextBlock Text="{Binding Type}" ui:TextBlockAutoToolTip.Enabled="True"/>
+								</DataTemplate>
+							</GridViewColumn.CellTemplate>
+						</GridViewColumn>
+					</GridView.Columns>
+				</tv:SharpGridView>
+			</ListView.View>
+		</tv:SharpTreeView>
+
+		<Border
+			Name="statusBorder" Grid.Row="1"
+			BorderThickness="0,1,0,0" BorderBrush="#c0c0c0">
+			<TextBlock Name="statusText" Margin="6,3,6,4" TextTrimming="CharacterEllipsis"/>
+		</Border>
+
+		<TextBlock
+			VerticalAlignment="Center" HorizontalAlignment="Center"
+			Visibility="{Binding HintTextVisibility}"
+			Text="Drag a file onto this window to load it."
+			FontStyle="Italic" Opacity="0.6"/>
+	</Grid>
+</Window>
