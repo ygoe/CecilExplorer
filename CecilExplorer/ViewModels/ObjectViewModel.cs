@@ -293,7 +293,7 @@ namespace CecilExplorer.ViewModels
 			if (type == typeof(long)) return "long";
 			if (type == typeof(float)) return "float";
 			if (type == typeof(double)) return "double";
-			if (type == typeof(decimal)) return "decimal"; 
+			if (type == typeof(decimal)) return "decimal";
 			if (type == typeof(char)) return "char";
 			if (type == typeof(string)) return "string";
 

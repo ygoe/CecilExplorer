@@ -14,6 +14,7 @@ using System.Windows;
 // Repeat for Win32 file version resource because the assembly version is expanded to 4 parts.
 [assembly: AssemblyFileVersion(AssemblyInfo.Version)]
 
+// Indicate the build configuration
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
 #else

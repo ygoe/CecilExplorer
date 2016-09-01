@@ -1,0 +1,3 @@
+# Set core.autocrlf=false for everybody to be consistent and predictable everywhere.
+# See http://stackoverflow.com/a/10017566/143684
+* -text

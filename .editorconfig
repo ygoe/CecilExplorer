@@ -1,0 +1,10 @@
+; Per-solution editor formatting configuration - http://editorconfig.org/
+
+root = true
+
+[*.{config,cs,manifest,xaml}]
+charset = utf-8
+end_of_line = crlf
+indent_style = tab
+insert_final_newline = true
+trim_trailing_whitespace = true

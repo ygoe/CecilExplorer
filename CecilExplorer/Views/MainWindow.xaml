@@ -18,7 +18,7 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-		
+
 		<tv:SharpTreeView
 			x:Name="treeView"
 			Grid.Row="0"

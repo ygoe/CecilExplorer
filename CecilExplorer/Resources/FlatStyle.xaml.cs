@@ -56,7 +56,7 @@ namespace SecondFolderBackup.Resources
 						cbi.PreviewMouseUp += cbi_PreviewMouseUp;
 
 						// Ensure the event eater disappears when the popup is closed for a different reason
-						p.Closed += delegate(object sender2, EventArgs args2)
+						p.Closed += delegate (object sender2, EventArgs args2)
 						{
 							cbi.PreviewMouseUp -= cbi_PreviewMouseUp;
 						};

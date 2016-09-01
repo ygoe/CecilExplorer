@@ -830,7 +830,7 @@ namespace Unclassified.UI
 			object value = column.ReadLocalValue(dp);
 			if (value != null && value.GetType() == dp.PropertyType)
 			{
-				return (double) value;
+				return (double)value;
 			}
 			return null;
 		}
@@ -850,7 +850,7 @@ namespace Unclassified.UI
 
 		public static double GetWidth(DependencyObject obj)
 		{
-			return (double) obj.GetValue(WidthProperty);
+			return (double)obj.GetValue(WidthProperty);
 		}
 
 		public static void SetWidth(DependencyObject obj, double width)
@@ -934,7 +934,7 @@ namespace Unclassified.UI
 
 		public static double GetWidth(DependencyObject obj)
 		{
-			return (double) obj.GetValue(WidthProperty);
+			return (double)obj.GetValue(WidthProperty);
 		}
 
 		public static void SetWidth(DependencyObject obj, double width)
@@ -987,7 +987,7 @@ namespace Unclassified.UI
 
 		public static double GetMinWidth(DependencyObject obj)
 		{
-			return (double) obj.GetValue(MinWidthProperty);
+			return (double)obj.GetValue(MinWidthProperty);
 		}
 
 		public static void SetMinWidth(DependencyObject obj, double minWidth)
@@ -997,7 +997,7 @@ namespace Unclassified.UI
 
 		public static double GetMaxWidth(DependencyObject obj)
 		{
-			return (double) obj.GetValue(MaxWidthProperty);
+			return (double)obj.GetValue(MaxWidthProperty);
 		}
 
 		public static void SetMaxWidth(DependencyObject obj, double maxWidth)
@@ -1007,7 +1007,7 @@ namespace Unclassified.UI
 
 		public static bool GetIsFillColumn(DependencyObject obj)
 		{
-			return (bool) obj.GetValue(IsFillColumnProperty);
+			return (bool)obj.GetValue(IsFillColumnProperty);
 		}
 
 		public static void SetIsFillColumn(DependencyObject obj, bool isFillColumn)
@@ -1046,7 +1046,7 @@ namespace Unclassified.UI
 			object value = column.ReadLocalValue(IsFillColumnProperty);
 			if (value != null && value.GetType() == IsFillColumnProperty.PropertyType)
 			{
-				return (bool) value;
+				return (bool)value;
 			}
 			return null;
 		}

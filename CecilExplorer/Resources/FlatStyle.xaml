@@ -626,7 +626,7 @@
 	<!-- endregion CheckBox -->
 
 	<!-- region RadioButton -->
-	
+
 	<Style TargetType="{x:Type RadioButton}">
 		<Setter Property="Background" Value="#ffffff"/>
 		<Setter Property="Foreground" Value="#000000"/>
